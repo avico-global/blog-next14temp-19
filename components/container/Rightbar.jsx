@@ -11,7 +11,7 @@ export default function Rightbar({
   className,
 }) {
   const featuredArticle = blog_list.filter((item) => item.isFeatured);
-  const editorPick = blog_list.slice(10, 14);
+  const editorPick = blog_list.slice(-4);
   const markdownIt = new MarkdownIt();
   const content = markdownIt.render(
     aboutme?.value?.replaceAll(
