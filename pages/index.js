@@ -14,8 +14,8 @@ import {
   sanitizeUrl,
 } from "@/lib/myFun";
 // import Popular from "@/components/container/Popular";
-import MustRead from "@/components/container/MustRead";
-import Popular from "@/components/container/Home/Popular";
+import HomeBanner from "@/components/container/HomeBanner";
+import MustRead from "@/components/container/Home/MustRead";
 import LatestBlog from "@/components/container/Home/LatestBlog";
 import ShowoneCategory from "@/components/container/Home/ShowoneCategory";
 import TrendingNow from "@/components/container/Home/TrendingNow";
@@ -32,8 +32,7 @@ export default function Home({
   blog_list,
   about_me,
 }) {
-
- 
+  console.log(blog_list);
 
  const firstcategorydata = blog_list?.filter(
   (item) => item?.article_category === categories[0]?.title
@@ -87,11 +86,11 @@ export default function Home({
           project_id={project_id}
         />
 
-        <MustRead data={blog_list} imagePath={imagePath} />
+       <HomeBanner data={blog_list} banner={banner} imagePath={imagePath} />
 
         <Container className="grid grid-cols-1 md:grid-cols-3 md:gap-12 pb-12 ">
           <div className="col-span-2 flex flex-col gap-12">
-            <Popular data={blog_list} imagePath={imagePath} />
+            <MustRead data={blog_list} imagePath={imagePath} />
             <LatestBlog data={latestBlogs} imagePath={imagePath} />
             <ShowoneCategory data={firstcategorydata}  imagePath={imagePath} />
             <TrendingNow data={blog_list} imagePath={imagePath} />
@@ -100,13 +99,14 @@ export default function Home({
           
            <Rightbar  blog_list={blog_list} imagePath={imagePath} project_id={project_id} aboutme={about_me}/>
           </div>
-        </Container>
+        </Container> 
+
         <Footer
           logo={logo}
           categories={categories}
           imagePath={imagePath}
           blog_list={blog_list}
-        />
+        /> 
       </FullContainer>
     </div>
   );

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { sanitizeUrl } from "../../../lib/myFun";
 export default function TrendingNow({ data, imagePath }) {
   const trendingnow = data.filter((item) => item.trendingNews);
-  console.log("trendingnow🚀🚀🚀", data);
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-start border-b-2 mb-3 border-quinary">
@@ -18,7 +17,6 @@ export default function TrendingNow({ data, imagePath }) {
 }
 
 function Cardflexcol({ selectedData, imagePath }) {
-  console.log("imagePath", `${imagePath}/${selectedData?.image}`);
   return (
     <div className="grid grid-cols-2 gap-4 md:gap-12  ">
       {selectedData.map((item, index) => (

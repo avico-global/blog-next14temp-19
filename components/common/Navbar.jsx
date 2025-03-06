@@ -117,10 +117,10 @@ export default function Navbar({
     handleResize();
 
     // Add event listener
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -133,13 +133,9 @@ export default function Navbar({
         <Container className="h-full relative max-w-6xl lg:px-8">
           <div className="flex flex-row h-full justify-between items-center">
             <div className="flex  flex-row font-montserrat font-semibold text-md h-full items-center">
-              <Link
-                href="/"
-                className="text-xl hidden md:block  md:text-2xl text-black font-bold font-montserrat uppercase pr-4"
-              >
-                coney
-                {/* <Logo logo={logo} imagePath={imagePath} /> */}
-              </Link>
+              <div className="hidden md:block">
+              <Logo logo={logo} imagePath={imagePath} />
+              </div>
               <button
                 onClick={toggleSidebar}
                 className=" md:hidden   text-black transition-colors"
@@ -206,7 +202,7 @@ export default function Navbar({
             </div>
 
             <div className="text-3xl !w-fit md:hidden md:text-2xl text-white font-bold font-montserrat uppercase">
-              {/* <Logo logo={logo} imagePath={imagePath} /> */}coney
+               <Logo logo={logo} imagePath={imagePath} /> 
             </div>
 
             <div className="flex flex-row gap-4">
@@ -372,7 +368,6 @@ export default function Navbar({
           backgroundBlendMode: "overlay",
         }}
       >
-      
         <div className="p-6">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold text-white font-montserrat">

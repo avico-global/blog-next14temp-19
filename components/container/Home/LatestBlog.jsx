@@ -24,7 +24,6 @@ export default function LatestBlog({ data, imagePath }) {
 }
 
 function Cardflexcol({ selectedData, imagePath }) {
-  console.log("imagePath", `${imagePath}/${selectedData?.image}`);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-12  ">
       {selectedData.map((item, index) => (
@@ -70,7 +69,6 @@ function Cardflexcol({ selectedData, imagePath }) {
 }
 
 function Cardflexrow({ dontmiss, imagePath }) {
-  console.log("imagePath", `${imagePath}/${dontmiss?.image}`);
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8 ">
       {dontmiss?.map((item, index) => (

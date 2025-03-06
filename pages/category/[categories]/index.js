@@ -115,7 +115,6 @@ export default function index({
 }
 
 function Cardflexrow({ data, imagePath }) {
-  console.log("data in this way", data);
   const router = useRouter();
   const { categories } = router.query;
   const selectedCategory = data?.filter(
@@ -123,7 +122,6 @@ function Cardflexrow({ data, imagePath }) {
       item.article_category?.replace(/\s+/g, "-").toLowerCase() ===
       categories?.toLowerCase()
   );
-  console.log("selectedCategory in this way", selectedCategory);
 
   return (
     <>
@@ -178,41 +176,37 @@ function NextCategory({ findcategory, data, imagePath }) {
   const router = useRouter();
   const { categories } = router.query;
 
-  // Ensure categories is properly formatted
-  const selectedCategory = categories
-    ? decodeURIComponent(categories).trim()
-    : "";
+  // Format current category name to match the URL format
+  const currentCategory = categories?.toLowerCase().replace(/-/g, ' ');
 
   // Find the index of the current category
   const currentIndex = findcategory.findIndex(
-    (item) => item.title.toLowerCase() === selectedCategory.toLowerCase()
+    (item) => item.title.toLowerCase() === currentCategory
   );
 
   // Get next category (looping logic)
-  const nextIndex = (currentIndex + 1) % findcategory.length;
-  const nextcategory = findcategory[nextIndex];
+  const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % findcategory.length;
+  const nextCategory = findcategory[nextIndex];
 
-  console.log("Current Category:", selectedCategory);
-  console.log("Next Category:", nextcategory);
-
-  // Fetch data for the next category
-  const nextcategorydata = data.filter(
-    (item) =>
-      item.article_category.toLowerCase() === nextcategory.title.toLowerCase()
+  // Filter data for the next category
+  const nextCategoryData = data.filter(
+    (item) => item.article_category.toLowerCase() === nextCategory?.title.toLowerCase()
   );
 
-  console.log("nextcategorydata", nextcategorydata);
+  // If no categories are found, return null
+  if (!nextCategory) return null;
+
   return (
     <div className="flex flex-col gap-7 pb-12 ">
       <Link
-        href={`/category/${sanitizeUrl(nextcategory?.title)}`}
+        href={`/category/${sanitizeUrl(nextCategory.title)}`}
         className="flex items-start border-b-2  border-quaternary"
       >
         <h1 className="text-sm py-1 text-white bg-quaternary px-2 uppercase font-montserrat ">
-          {nextcategory?.title}
+          {nextCategory.title}
         </h1>
       </Link>
-      <Slider blog_list={nextcategorydata} imagePath={imagePath} />
+      <Slider blog_list={nextCategoryData} imagePath={imagePath} />
     </div>
   );
 }

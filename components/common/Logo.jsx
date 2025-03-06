@@ -80,12 +80,7 @@ const Logo = ({ logo, imagePath, className }) => {
         />
       ) : logoType === "text" ? (
         <h2
-          className="text-xl md:text-2xl font-extrabold py-1 whitespace-nowrap"
-          style={{
-            fontSize: `${fontSize}px`,
-            fontWeight: isBold ? "bold" : "normal",
-            fontStyle: isItalic ? "italic" : "normal",
-          }}
+          className="text-base md:text-xl text-white md:text-black font-montserrat py-1 whitespace-nowrap"
         >
           {logoText}
         </h2>

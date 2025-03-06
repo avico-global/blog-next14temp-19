@@ -66,8 +66,8 @@ export default function about({
         blog_list={blog_list}
         project_id={project_id}
       />
-      <Container className="grid grid-cols-1 md:grid-cols-3  py-24 pt-40 gap-0 md:gap-12  ">
-        <div className=" md:col-span-2 border">
+      <Container className="grid grid-cols-1 md:grid-cols-3  py-24 pt-40 gap-0 md:gap-12   ">
+        <div className=" md:col-span-2 flex flex-col gap-4  justify-center items-center ">
           <h2 className="text-2xl md:text-4xl text-center font-bold font-montserrat uppercase ">
             Clean & Simple
           </h2>
@@ -86,12 +86,7 @@ export default function about({
               />
             </div>
           </div>
-          <div className="border border-red-600 prose w-full">
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-            hlo
-          </div>
-
-          <div className="prose font-montserrat border lg:prose-md   ">
+          <div className=" prose ">
             <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </div>
@@ -101,6 +96,7 @@ export default function about({
             aboutme={about_me}
             imagePath={imagePath}
             project_id={project_id}
+            className="hidden"
           />
         </div>
       </Container>

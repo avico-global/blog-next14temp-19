@@ -26,7 +26,7 @@ export default function ContactUs({
   favicon,
 }) {
   return (
-    <FullContainer className="bg-secondarydark ">
+    <FullContainer className="bg-secondarydark">
       <Head>
         <meta charSet="UTF-8" />
         <title>{meta?.title}</title>
@@ -77,7 +77,14 @@ export default function ContactUs({
         </div>
         <div className="flex flex-col md:flex-row ">
           <div className="w-full md:w-[40%]  relative">
-            <Image src={image} alt="contact" height={1800} width={1800} />
+            <Image
+              src={image}
+              alt="contact"
+              height={1800}
+              width={1800}
+              priority
+              className="w-full h-full object-cover"
+            />
             <div className="p-11 absolute top-0 flex  flex-col justify-center  text-white left-0 w-full h-full bg-black/50">
               <h2 className="text-xl md:text-2xl font-montserrat  pb-8">
                 Let’s get in touch today!

@@ -5,15 +5,15 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { sanitizeUrl } from "../../../lib/myFun";
-export default function Popular({ data, imagePath }) {
-  const selectedData = data?.slice(0, 1);
-  console.log("selectedData", selectedData);
-  const dontmiss = data?.slice(1, 5);
+export default function MustRead({ data, imagePath }) {
+  const mustread = data?.filter((item) => item.isMustRead === true)
+  const selectedData = mustread?.slice(0, 1);
+  const dontmiss = mustread?.slice(1, 5);
   return (
     <div className="">
       <div className="flex items-start border-b-2 mb-7 border-secondary">
         <h1 className="text-sm py-1 bg-secondary px-2 uppercase font-montserrat ">
-          Popular articles
+          Must Read
         </h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
@@ -29,7 +29,6 @@ export default function Popular({ data, imagePath }) {
 }
 
 function Cardflexcol({ selectedData, imagePath }) {
-  console.log("selectedData in cardflexcol", selectedData);
 
   return (
     <div className="flex flex-col gap-3 group">
@@ -76,7 +75,6 @@ function Cardflexcol({ selectedData, imagePath }) {
 }
 
 function Cardflexrow({ dontmiss, imagePath }) {
-  console.log("imagePath", `${imagePath}/${dontmiss?.image}`);
   return (
     <div className="flex flex-col gap-7">
       {dontmiss?.map((item, index) => (

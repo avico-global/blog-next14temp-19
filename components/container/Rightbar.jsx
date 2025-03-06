@@ -8,10 +8,9 @@ export default function Rightbar({
   aboutme,
   imagePath,
   project_id,
+  className,
 }) {
-  console.log("blog_list", blog_list);
   const featuredArticle = blog_list.filter((item) => item.isFeatured);
-  console.log("featuredArticle", featuredArticle);
   const editorPick = blog_list.slice(10, 14);
   const markdownIt = new MarkdownIt();
   const content = markdownIt.render(
@@ -21,7 +20,7 @@ export default function Rightbar({
     ) || ""
   );
   return (
-    <div className="sticky top-14 ">
+    <div className="sticky top-5 pt-14 ">
       <div className="flex items-start border-b-2 mb-7 border-quinary">
         <h1 className="text-sm text-white py-1 bg-quinary px-2 uppercase font-montserrat ">
           Featured Article
@@ -32,7 +31,9 @@ export default function Rightbar({
           <Cardflexcol key={index} item={item} imagePath={imagePath} />
         ))}
       </div>
-      <Aboutme data={aboutme} imagePath={imagePath} content={content} />
+      <div className={className}>
+        <Aboutme data={aboutme} imagePath={imagePath} content={content} />
+      </div>
       <div className="flex items-start border-b-2 mb-7 border-quinary">
         <h1 className="text-sm text-white py-1 bg-quinary px-2 uppercase font-montserrat ">
           Editor's Pick
@@ -103,7 +104,7 @@ function Aboutme({ data, imagePath, content }) {
           className="w-full h-full object-cover  aspect-[7/6] pb-5 px-5"
         />
       </div>
-      <h2 className="text-sm leading-4 line-clamp-2 text-center group-hover:text-primary transition-all duration-300 font-montserrat">
+      <h2 className="text-sm leading-4 line-clamp-4 text-center group-hover:text-primary transition-all duration-300 font-montserrat">
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </h2>
       <div className="text-sm leading-4 line-clamp-2 text-center w-fit px-2 py-1 text-white hover:bg-primary bg-black transition-all duration-300 font-montserrat">
