@@ -134,7 +134,7 @@ export default function Navbar({
           <div className="flex flex-row h-full justify-between items-center">
             <div className="flex  flex-row font-montserrat font-semibold text-md h-full items-center">
               <div className="hidden md:block">
-              <Logo logo={logo} imagePath={imagePath} />
+                <Logo logo={logo} imagePath={imagePath} />
               </div>
               <button
                 onClick={toggleSidebar}
@@ -147,7 +147,10 @@ export default function Navbar({
                   pathname === "/" ? "after:w-full" : "hover:after:w-full"
                 } ${hoverme}`}
               >
-                <Link className={``} href="/">
+                <Link className={``}
+                 href="/"
+                 title="Home"
+                 >
                   Home
                 </Link>
               </div>
@@ -186,7 +189,10 @@ export default function Navbar({
                     : "hover:after:w-full"
                 } ${hoverme}`}
               >
-                <Link href="/about_us">About</Link>
+                <Link 
+                href="/about_us"
+                title="About"
+                >About</Link>
               </div>
               <div
                 className={`h-full px-3 hidden md:flex items-center justify-center ${
@@ -195,14 +201,18 @@ export default function Navbar({
                     : "hover:after:w-full"
                 } ${hoverme}`}
               >
-                <Link className={` hidden md:block`} href="/contact_us">
+                <Link 
+                className={` hidden md:block`}
+                 href="/contact_us"
+                 title="Contact Us "
+                 >
                   Contact
                 </Link>
               </div>
             </div>
 
             <div className="text-3xl !w-fit md:hidden md:text-2xl text-white font-bold font-montserrat uppercase">
-               <Logo logo={logo} imagePath={imagePath} /> 
+              <Logo logo={logo} imagePath={imagePath} />
             </div>
 
             <div className="flex flex-row gap-4">
@@ -281,6 +291,7 @@ export default function Navbar({
             <Image
               src={MobileNavbarimage}
               alt="logo"
+              title="Logo"
               height={1800}
               width={1800}
               className="object-cover object-center  h-screen"
@@ -308,6 +319,7 @@ export default function Navbar({
                     href="/"
                     className={`${hoverme} w-fit`}
                     onClick={toggleSidebar}
+                    title="Home"
                   >
                     Home
                   </Link>
@@ -315,6 +327,7 @@ export default function Navbar({
                     href="/about_us"
                     className={`${hoverme} w-fit`}
                     onClick={toggleSidebar}
+                    title="About"
                   >
                     About
                   </Link>
@@ -322,6 +335,7 @@ export default function Navbar({
                     href="/contact_us"
                     className={`${hoverme} w-fit`}
                     onClick={toggleSidebar}
+                    title="Contact"
                   >
                     Contact
                   </Link>
@@ -337,6 +351,7 @@ export default function Navbar({
                       href={`/category/${sanitizeUrl(category?.title)}`}
                       className={`${hoverme} text-gray-400 w-fit`}
                       onClick={toggleSidebar}
+                      title={category?.title}
                     >
                       {category?.title}
                     </Link>
@@ -399,6 +414,7 @@ export default function Navbar({
                   key={index}
                   href={`/${sanitizeUrl(item?.title)}`}
                   onClick={toggleMobileSearch}
+                  title={item?.title}
                 >
                   <div className="py-3 border-b border-gray-100 hover:bg-gray-50 transition-colors">
                     <h3 className="text-black font-montserrat line-clamp-2">
@@ -433,6 +449,7 @@ function Dropdown({ categories, blog_list, imagePath }) {
             <Link
               className="block w-fit"
               href={`/category/${sanitizeUrl(category?.title)}`}
+              title={category?.title}
             >
               {category?.title}
             </Link>
@@ -442,14 +459,6 @@ function Dropdown({ categories, blog_list, imagePath }) {
       <div className=" ">
         <CategorySlider blog_list={blog_list} imagePath={imagePath} />
       </div>
-    </div>
-  );
-}
-
-function MobileNavbar() {
-  return (
-    <div>
-      <h1>MobileNavbar</h1>
     </div>
   );
 }

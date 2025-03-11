@@ -5,15 +5,12 @@ import FullContainer from "../components/common/FullContainer";
 import Footer from "../components/common/Footer";
 import Head from "next/head";
 import GoogleTagManager from "@/lib/GoogleTagManager";
-import image from "../public/images/contact.jpg";
 
 import {
   callBackendApi,
   getDomain,
   getImagePath,
-  sanitizeUrl,
 } from "@/lib/myFun";
-import Image from "next/image";
 
 export default function ContactUs({
   logo,
@@ -75,28 +72,8 @@ export default function ContactUs({
             Contact Us
           </h1>
         </div>
-        <div className="flex flex-col md:flex-row ">
-          <div className="w-full md:w-[40%]  relative">
-            <Image
-              src={image}
-              alt="contact"
-              height={1800}
-              width={1800}
-              priority
-              className="w-full h-full object-cover"
-            />
-            <div className="p-11 absolute top-0 flex  flex-col justify-center  text-white left-0 w-full h-full bg-black/50">
-              <h2 className="text-xl md:text-2xl font-montserrat  pb-8">
-                Let’s get in touch today!
-              </h2>
-              <p className="font-montserrat text-sm">
-                In vestibulum maximus lectus nec vestibulum. Donec porttitor,
-                dui sit amet malesuada posuere, orci lectus porttitor nulla,
-                interdum pellentesque nibh ex non erat.
-              </p>
-            </div>
-          </div>
-          <div className="w-full md:w-[60%]  p-11 border border-gray-300">
+        <div className="flex">
+          <div className="w-full md:w-full  p-11 border border-gray-300">
             <form className="flex flex-col gap-8 ">
               <div className="grid grid-cols-2 gap-4">
                 <div>

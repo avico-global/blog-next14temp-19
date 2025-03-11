@@ -49,20 +49,20 @@ export default function BreadCrumb() {
 
     return (
         <Container>
-            <div className="flex items-center gap-2 py-4 md:text-xs text-gray-600">
+            <div className="flex items-center gap-2 py-4 md:text-xs text-gray-100">
                 {paths.map((path, index) => (
                     <React.Fragment key={path.url}>
                         {index > 0 && (
-                            <ChevronRight className="w-4 h-4 text-gray-400" />
+                            <ChevronRight className="w-4 h-4 text-gray-100" />
                         )}
                         {index === paths.length - 1 ? (
-                            <span className="font-semibold text-black">
+                            <span className="font-semibold text-white">
                                 {path.name}
                             </span>
                         ) : (
                             <Link
                                 href={path.url}
-                                className="hover:text-primary transition-colors"
+                                className="ransition-colors"
                             >
                                 {path.name}
                             </Link>

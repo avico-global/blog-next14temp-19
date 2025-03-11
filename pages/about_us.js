@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import Image from "next/image";
-import banner from "@/public/images/about.png";
 import Container from "@/components/common/Container";
 import Head from "next/head";
 import GoogleTagManager from "@/lib/GoogleTagManager";
@@ -68,16 +67,17 @@ export default function about({
       />
       <Container className="grid grid-cols-1 md:grid-cols-3  py-24 pt-40 gap-0 md:gap-12   ">
         <div className=" md:col-span-2 flex flex-col gap-4  justify-center items-center ">
-          <h2 className="text-2xl md:text-4xl text-center font-bold font-montserrat uppercase ">
+          <h1 className="text-2xl md:text-4xl text-center font-bold font-montserrat uppercase ">
             Clean & Simple
-          </h2>
+          </h1>
           <p className=" text-xl font-montserrat text-center font-semibold py-4">
-            About me and my blog
+            About  blog
           </p>
           <div className="flex justify-center items-center">
             <div className="relative px-6 sm:px-0 w-full aspect-square sm:w-[300px] sm:h-[300px]  rounded-full overfolw-hidden ">
               <Image
                 src={`${imagePath}/${about_me?.file_name}`}
+                title={about_me?.title || "About me and my blog"}
                 alt="banner"
                 width={10000}
                 height={10000}

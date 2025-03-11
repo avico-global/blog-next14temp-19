@@ -7,12 +7,11 @@ export default function ShowoneCategory({ data, imagePath }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-start border-b-2 mb-3 border-quaternary">
-        <h1 className="text-sm py-1 text-white bg-quaternary px-2 uppercase font-montserrat ">
+        <h2 className="text-sm py-1 text-white bg-quaternary px-2 uppercase font-montserrat ">
           {title}
-        </h1>
+        </h2>
       </div>
       <Slider blog_list={data} imagePath={imagePath} className="mb-10" />
-    </div>  
+    </div>
   );
 }
-

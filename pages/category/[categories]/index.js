@@ -1,6 +1,5 @@
 import React from "react";
 import CategoryBanner from "@/components/container/CategoryBanner";
-import banner from "@/public/images/catbanner.jpg";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import Container from "@/components/common/Container";
@@ -8,7 +7,6 @@ import Image from "next/image";
 import Slider from "../../../components/container/Slider";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import BreadCrumb from "@/components/container/BreadCrumb";
 import Head from "next/head";
 import GoogleTagManager from "@/lib/GoogleTagManager";
 import Rightbar from "@/components/container/Rightbar";
@@ -78,8 +76,8 @@ export default function index({
         project_id={project_id}
       />
       <CategoryBanner
+      
         blog_list={blog_list}
-        image={`${imagePath}/${banner?.file_name}`}
         imagePath={imagePath}
         data={categories}
       />
@@ -125,19 +123,17 @@ function Cardflexrow({ data, imagePath }) {
 
   return (
     <>
-      <div className="flex items-start border-b-2 mb-7 border-quinary">
-        <h1 className="text-sm text-white py-1 bg-quinary px-2 uppercase font-montserrat ">
-          {categories}
-        </h1>
-      </div>
-
       <div className="grid grid-cols-2 gap-4 md:gap-12  ">
         {selectedCategory.map((item, index) => (
           <div key={index} className={`group flex flex-col gap-4`}>
             <div className="relative overflow-hidden aspect-[12/8.5]">
-              <Link href={`/${sanitizeUrl(item?.title)}`}>
+              <Link
+               href={`/${sanitizeUrl(item?.title)}`}
+              title={item?.title}
+              >
                 <Image
                   src={`${imagePath}/${item?.image}`}
+                  title={item?.title}
                   alt={item.title}
                   width={1800}
                   height={1800}
@@ -147,23 +143,25 @@ function Cardflexrow({ data, imagePath }) {
               <Link
                 href={`/category/${item.article_category}`}
                 className="text-[10px] px-1 text-white py-[2px] bg-quinary hover:bg-primary transition-all duration-300 font-montserrat absolute bottom-0 left-0"
+              title={item?.article_category}
               >
                 {item.article_category}
               </Link>
             </div>
             <Link
               href={`/${sanitizeUrl(item?.title)}`}
-              className="text-sm md:text-base md:text-[21px] leading-6 line-clamp-2 group-hover:text-primary transition-all duration-300 font-montserrat"
-            >
+             className="text-sm md:text-base md:text-[21px] leading-6 line-clamp-2 group-hover:text-primary transition-all duration-300 font-montserrat"
+              title={item?.title} 
+           >
               {item.title}
             </Link>
             <div className="flex flex-row gap-2">
-              <h2 className="text-xs font-montserrat font-semibold">
+              <p className="text-xs font-montserrat font-semibold">
                 {item.author}&nbsp;&nbsp;-
-              </h2>
-              <h2 className="text-xs font-montserrat text-gray-500">
+              </p>
+              <p className="text-xs font-montserrat text-gray-500">
                 {item.published_at}
-              </h2>
+              </p>
             </div>
           </div>
         ))}
@@ -201,10 +199,11 @@ function NextCategory({ findcategory, data, imagePath }) {
       <Link
         href={`/category/${sanitizeUrl(nextCategory.title)}`}
         className="flex items-start border-b-2  border-quaternary"
+        title={nextCategory.title}
       >
-        <h1 className="text-sm py-1 text-white bg-quaternary px-2 uppercase font-montserrat ">
+        <h2 className="text-sm py-1 text-white bg-quaternary px-2 uppercase font-montserrat ">
           {nextCategory.title}
-        </h1>
+        </h2>
       </Link>
       <Slider blog_list={nextCategoryData} imagePath={imagePath} />
     </div>
