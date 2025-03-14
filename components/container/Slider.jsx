@@ -102,10 +102,14 @@ export default function Slider({ blog_list, imagePath, className }) {
             >
               <div className="relative group overflow-hidden aspect-[12/8.5]">
                 <div className="relative overflow-hidden aspect-[12/8.5]">
-                  <Link href={`/${sanitizeUrl(item?.title)}`}>
+                  <Link
+                   href={`/${sanitizeUrl(item?.title)}`}
+                   title={item?.title}
+                   >
                     <Image
                       src={`${imagePath}/${item?.image}`}
                       alt={item.title}
+                      title={item?.title}
                       width={1800}
                       height={1800}
                       className="w-full h-full object-cover aspect-[12/8.5]"
@@ -114,18 +118,19 @@ export default function Slider({ blog_list, imagePath, className }) {
                   <Link
                     href={`/category/${item.article_category}`}
                     className="text-[10px] px-1 text-white py-[2px] bg-quinary hover:bg-tertiary transition-all duration-300 font-montserrat absolute bottom-0 left-0"
+                    title={item?.article_category}
                   >
                     {item.article_category}
                   </Link>
                 </div>
               </div>
               <div className="flex pl-1 flex-col gap-1 py-2">
-                <Link
+                <h3
                   href={`/${sanitizeUrl(item?.title)}`}
                   className="text-black group-hover:text-quaternary transition-all duration-300 leading-5 text-base line-clamp-2 font-montserrat"
                 >
                   {item?.title}
-                </Link>
+                </h3>
                 <p className="text-gray-500 text-xs">{item?.published_at}</p>
               </div>
             </div>

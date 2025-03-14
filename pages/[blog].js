@@ -1,15 +1,9 @@
 import React from "react";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-import Banner from "@/components/container/Banner";
 import Slider from "../components/container/Slider";
 import Image from "next/image";
-import Link from "next/link";
-import { Search } from "lucide-react";
 import Container from "@/components/common/Container";
-import BreadCrumb from "@/components/container/BreadCrumb";
-import { useRouter } from "next/router";
-import { useState, useEffect, useRef } from "react";
 import MarkdownIt from "markdown-it";
 import Rightbar from "@/components/container/Rightbar";
 import {
@@ -25,13 +19,9 @@ export default function blog({
   categories,
   logo,
   imagePath,
-  banner,
   blog_list,
   my_blog,
-  meta,
-  isValidBlog,
   project_id,
-  categoryExists,
   about_me,
   domain,
 }) {
@@ -133,7 +123,6 @@ function SingleBlog({
   project_id,
   about_me,
 }) {
- 
   return (
     <Container className="py-6">
       <div className="relative grid grid-cols-1 md:grid-cols-3 md:gap-6 gap-0 justify-between max-w-[1100px] mx-auto">
@@ -146,16 +135,17 @@ function SingleBlog({
           </div>
           <Image
             src={`${imagePath}/${my_blog?.file_name}`}
+            title={my_blog?.vale?.title || "Blog Image"}
             width={1500}
             height={1500}
             alt="banner"
             priority
             className=""
           />
-          <h1 className="prose lg:prose-base font-montserrat ">
-            {" "}
-            <div dangerouslySetInnerHTML={{ __html: content }} />
-          </h1>
+          <div
+            className="prose lg:prose-base font-montserrat "
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </div>
         <div className="col-span-1 relative">
           <Rightbar
